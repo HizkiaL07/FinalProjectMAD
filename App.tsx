@@ -1,5 +1,5 @@
 import React from 'react';
-import SignIn from './FINAL/Pages/SplashScreen';
+import SignIn from './FINAL/Pages/Riwayat';
 
 const App = () => {
   return <SignIn />;
