@@ -11,9 +11,7 @@ const Riwayat = () => {
       <Text style={styles.title}>PAKET SAYA</Text>
       <Gap height={24} />
 
-      {/* Card abu-abu */}
       <View style={styles.card}>
-        {/* Tab Toggle: dipindahkan ke bagian atas dalam card */}
         <View style={styles.tabContainer}>
           <TouchableOpacity
             style={[
