@@ -4,7 +4,7 @@ import {Header, TextInput} from '../../Components/Molecules';
 import {Button, Gap} from '../../Components/Atoms';
 import {ImagePhoto} from '../../Assets';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
   return (
     <View style={styles.pageContainer}>
       <Header text="SIGN IN" />
@@ -16,7 +16,12 @@ const SignIn = () => {
         <Gap height={16} />
         <TextInput text="Password" placeholder="Type your password" />
         <Gap height={24} />
-        <Button text="SIGN IN" color="#1E3269" buttonColor="#FFFFFF" />
+        <Button
+          text="SIGN IN"
+          color="#1E3269"
+          buttonColor="#FFFFFF"
+          onPress={() => navigation.navigate('Home')}
+        />
         <Gap height={16} />
         <Button
           text="Create Account"
@@ -24,6 +29,7 @@ const SignIn = () => {
           buttonColor="#FFFFFF"
           width={180}
           align="center"
+          onPress={() => navigation.navigate('SignUp')}
         />
       </View>
     </View>

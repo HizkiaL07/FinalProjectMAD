@@ -6,10 +6,13 @@ const Button = ({
   color = '#1E3269',
   buttonColor = '#FFFFFF',
   width = '100%',
+  onPress,
   align = 'stretch',
 }) => {
   return (
     <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={onPress}
       style={[styles.button(color, width, align)]}
       activeOpacity={0.7}>
       <Text style={styles.buttonText(buttonColor)}>{text}</Text>
