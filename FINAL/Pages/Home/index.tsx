@@ -21,7 +21,7 @@ import {
   ProfileIcon,
 } from '../../Assets';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.header}>
@@ -65,7 +65,7 @@ const HomeScreen = () => {
         <TouchableOpacity>
           <Image source={HomeIcon} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Riwayat')}>
           <Image source={HistoryIcon} style={styles.navIcon} />
         </TouchableOpacity>
         <TouchableOpacity>

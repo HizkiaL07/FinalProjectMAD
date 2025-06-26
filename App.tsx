@@ -1,5 +1,13 @@
 import React from 'react';
-import SignIn from './FINAL/Pages/SplashScreen';
+import SplashScreen from './FINAL/Pages/SplashScreen';
+import SignIn from './FINAL/Pages/SignIn';
+import SignUp from './FINAL/Pages/SignUp';
+import Riwayat from './FINAL/Pages/Riwayat';
+import Home from './FINAL/Pages/Home';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
@@ -23,6 +31,11 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Riwayat"
+          component={Riwayat}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

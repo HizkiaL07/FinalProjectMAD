@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {HomeIcon, HistoryIcon, MentorIcon, ProfileIcon} from '../../Assets';
 import Gap from '../../Components/Atoms/Gap';
 
-const Riwayat = () => {
+const Riwayat = ({navigation}) => {
   const [selectedTab, setSelectedTab] = useState<'aktif' | 'selesai'>('aktif');
 
   return (
@@ -11,9 +11,7 @@ const Riwayat = () => {
       <Text style={styles.title}>PAKET SAYA</Text>
       <Gap height={24} />
 
-      {/* Card abu-abu */}
       <View style={styles.card}>
-        {/* Tab Toggle: dipindahkan ke bagian atas dalam card */}
         <View style={styles.tabContainer}>
           <TouchableOpacity
             style={[
@@ -50,7 +48,7 @@ const Riwayat = () => {
         <Text style={styles.emptyText}>PAKET BELUM TERSEDIA</Text>
       </View>
       <View style={styles.bottomNav}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={HomeIcon} style={styles.navIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -88,8 +86,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 10,
     alignItems: 'center',
-    paddingBottom: 380,
-    justifyContent: 'center', // Ini yang penting
+    paddingBottom: 330,
+    justifyContent: 'center',
   },
   tabContainer: {
     flexDirection: 'row',
