@@ -12,6 +12,11 @@ import HomeIcon from './HomeIcon.png';
 import HistoryIcon from './HistoryIcon.png';
 import MentorIcon from './MentorIcon.png';
 import ProfileIcon from './ProfileIcon.png';
+import ARLINO from './ARLINO.png';
+import DANIEL from './DANIEL.png';
+import DIAN from './DIAN.png';
+import GHEN from './GHEN.png';
+import JEJE from './JEJE.png';
 
 export {
   Logo,
@@ -28,4 +33,9 @@ export {
   HistoryIcon,
   MentorIcon,
   ProfileIcon,
+  ARLINO,
+  DANIEL,
+  DIAN,
+  GHEN,
+  JEJE,
 };
