@@ -1,12 +1,5 @@
 import React from 'react';
-import SplashScreen from './FINAL/Pages/SplashScreen';
-import SignIn from './FINAL/Pages/SignIn';
-import SignUp from './FINAL/Pages/SignUp';
-import Home from './FINAL/Pages/Home';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-const Stack = createNativeStackNavigator();
+import SignIn from './FINAL/Pages/SplashScreen';
 
 const App = () => {
   return (
