@@ -68,10 +68,10 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.navigate('Riwayat')}>
           <Image source={HistoryIcon} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Mentor')}>
           <Image source={MentorIcon} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Image source={ProfileIcon} style={styles.navIcon} />
         </TouchableOpacity>
       </View>

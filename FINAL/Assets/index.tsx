@@ -17,6 +17,10 @@ import DANIEL from './DANIEL.png';
 import DIAN from './DIAN.png';
 import GHEN from './GHEN.png';
 import JEJE from './JEJE.png';
+import Settings from './Settings.png';
+import Logout from './Logout.png';
+import Privasi from './Privasi.png';
+import Help from './Help.png';
 
 export {
   Logo,
@@ -38,4 +42,8 @@ export {
   DIAN,
   GHEN,
   JEJE,
+  Settings,
+  Logout,
+  Privasi,
+  Help,
 };

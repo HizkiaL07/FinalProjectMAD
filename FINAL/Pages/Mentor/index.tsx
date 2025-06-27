@@ -20,7 +20,7 @@ import {
 } from '../../Assets';
 import Gap from '../../Components/Atoms/Gap';
 
-const Mentor = () => {
+const Mentor = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>MENTOR YANG TERSEDIA</Text>
@@ -45,16 +45,16 @@ const Mentor = () => {
         </View>
       </ScrollView>
       <View style={styles.bottomNav}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={HomeIcon} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Riwayat')}>
           <Image source={HistoryIcon} style={styles.navIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
           <Image source={MentorIcon} style={styles.navIcon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Image source={ProfileIcon} style={styles.navIcon} />
         </TouchableOpacity>
       </View>
