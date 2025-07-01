@@ -41,7 +41,7 @@ const ProfileScreen = ({navigation}) => {
 
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigation.navigate('SignIn')}>
+            onPress={() => navigation.replace('SplashScreen')}>
             <Image source={Logout} style={styles.menuIcon} />
             <Text style={styles.menuText}>Log out</Text>
           </TouchableOpacity>
