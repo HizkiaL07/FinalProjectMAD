@@ -40,22 +40,22 @@ const HomeScreen = ({navigation}) => {
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.menuGrid}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket1')}>
             <Image source={Icon1} style={styles.menuIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket2')}>
             <Image source={Icon2} style={styles.menuIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket3')}>
             <Image source={Icon3} style={styles.menuIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket4')}>
             <Image source={Icon4} style={styles.menuIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket5')}>
             <Image source={Icon5} style={styles.menuIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Paket6')}>
             <Image source={Icon6} style={styles.menuIcon} />
           </TouchableOpacity>
         </View>

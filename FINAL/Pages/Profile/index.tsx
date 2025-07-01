@@ -39,7 +39,9 @@ const ProfileScreen = ({navigation}) => {
             <Text style={styles.menuText}>Privasi</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => navigation.navigate('SignIn')}>
             <Image source={Logout} style={styles.menuIcon} />
             <Text style={styles.menuText}>Log out</Text>
           </TouchableOpacity>

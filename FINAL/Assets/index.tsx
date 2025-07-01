@@ -21,7 +21,13 @@ import Settings from './Settings.png';
 import Logout from './Logout.png';
 import Privasi from './Privasi.png';
 import Help from './Help.png';
-
+import ArrowBack from './ArrowBack.png';
+import HelloWorld from './HelloWorld.png';
+import Mentor from './Mentor.png';
+import CafeLearn from './CafeLearn.png';
+import Mentoring from './Mentoring.png';
+import ThinkLike from './ThinkLike.png';
+import Midnight from './Midnight.png';
 export {
   Logo,
   NullPhoto,
@@ -46,4 +52,11 @@ export {
   Logout,
   Privasi,
   Help,
+  ArrowBack,
+  HelloWorld,
+  Mentor,
+  CafeLearn,
+  Mentoring,
+  ThinkLike,
+  Midnight,
 };
