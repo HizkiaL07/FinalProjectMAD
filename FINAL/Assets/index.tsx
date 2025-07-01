@@ -21,6 +21,10 @@ import Settings from './Settings.png';
 import Logout from './Logout.png';
 import Privasi from './Privasi.png';
 import Help from './Help.png';
+import ArrowBack from './ArrowBack.png';
+import HelloWorld from './HelloWorld.png';
+import CafeLearn from './CafeLearn.png';
+import Mentor from './Mentor+1.png';
 
 export {
   Logo,
@@ -46,4 +50,8 @@ export {
   Logout,
   Privasi,
   Help,
+  ArrowBack,
+  HelloWorld,
+  CafeLearn,
+  Mentor,
 };

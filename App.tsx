@@ -6,6 +6,9 @@ import Riwayat from './FINAL/Pages/Riwayat';
 import Home from './FINAL/Pages/Home';
 import Mentor from './FINAL/Pages/Mentor';
 import Profile from './FINAL/Pages/Profile';
+import Paket1 from './FINAL/Pages/Paket1';
+import Paket2 from './FINAL/Pages/Paket2';
+import Paket3 from './FINAL/Pages/Paket3';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -48,6 +51,21 @@ const App = () => {
         <Stack.Screen
           name="Profile"
           component={Profile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Paket1"
+          component={Paket1}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Paket2"
+          component={Paket2}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Paket3"
+          component={Paket3}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
