@@ -1,5 +1,12 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import {
   HomeIcon,
   HistoryIcon,
@@ -10,8 +17,39 @@ import {
   Logout,
   Help,
 } from '../../Assets';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {showMessage} from 'react-native-flash-message';
 
 const ProfileScreen = ({navigation}) => {
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
+  const handlePickImage = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.7,
+      },
+      response => {
+        if (response.didCancel) {
+          return;
+        }
+        if (response.errorCode) {
+          Alert.alert('Error', response.errorMessage);
+          return;
+        }
+
+        if (response.assets && response.assets.length > 0) {
+          setProfilePhoto(response.assets[0].uri);
+          showMessage({
+            message: 'Foto profil berhasil diperbarui!',
+            type: 'success',
+            backgroundColor: '#4BB543',
+          });
+        }
+      },
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topSection}>
@@ -19,7 +57,12 @@ const ProfileScreen = ({navigation}) => {
       </View>
 
       <View style={styles.headerBackground}>
-        <Image source={ProfileIcon} style={styles.profileImage} />
+        <TouchableOpacity onPress={handlePickImage}>
+          <Image
+            source={profilePhoto ? {uri: profilePhoto} : ProfileIcon}
+            style={styles.profileImage}
+          />
+        </TouchableOpacity>
         <Text style={styles.profileName}>jonathan joestar</Text>
         <Text style={styles.profileId}>1050225122</Text>
 
