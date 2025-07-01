@@ -1,5 +1,12 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import {
   HomeIcon,
   HistoryIcon,
@@ -10,8 +17,90 @@ import {
   Logout,
   Help,
 } from '../../Assets';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {showMessage} from 'react-native-flash-message';
+import {getAuth} from 'firebase/auth';
+import {getDatabase, ref, onValue} from 'firebase/database';
+import {useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = ({navigation}) => {
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
+  const handleLogout = async () => {
+    const auth = getAuth();
+    const uid = auth.currentUser?.uid;
+    if (uid) {
+      await AsyncStorage.removeItem(`profilePhoto-${uid}`);
+    }
+    await auth.signOut();
+    navigation.replace('SignIn'); // navigasi ke halaman login
+  };
+
+  useEffect(() => {
+    const loadProfilePhoto = async () => {
+      const auth = getAuth();
+      const uid = auth.currentUser?.uid;
+      if (uid) {
+        const savedPhoto = await AsyncStorage.getItem(`profilePhoto-${uid}`);
+        if (savedPhoto) {
+          setProfilePhoto(savedPhoto);
+        } else {
+          setProfilePhoto(null); // fallback ke default
+        }
+      }
+    };
+    loadProfilePhoto();
+  }, []);
+
+  const [userName, setUserName] = useState('');
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+    const user = auth.currentUser;
+
+    if (user) {
+      const userRef = ref(db, 'users/' + user.uid);
+      onValue(userRef, snapshot => {
+        const data = snapshot.val();
+        if (data && data.fullName) {
+          setUserName(data.fullName);
+        }
+      });
+    }
+  }, []);
+
+  const handlePickImage = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.7,
+      },
+      async response => {
+        if (response.didCancel) return;
+        if (response.errorCode) {
+          Alert.alert('Error', response.errorMessage);
+          return;
+        }
+
+        if (response.assets && response.assets.length > 0) {
+          const uri = response.assets[0].uri;
+          setProfilePhoto(uri);
+          const auth = getAuth();
+          const uid = auth.currentUser?.uid;
+          if (uid) {
+            await AsyncStorage.setItem(`profilePhoto-${uid}`, uri);
+          }
+          showMessage({
+            message: 'Foto profil berhasil diperbarui!',
+            type: 'success',
+            backgroundColor: '#4BB543',
+          });
+        }
+      },
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topSection}>
@@ -19,8 +108,13 @@ const ProfileScreen = ({navigation}) => {
       </View>
 
       <View style={styles.headerBackground}>
-        <Image source={ProfileIcon} style={styles.profileImage} />
-        <Text style={styles.profileName}>jonathan joestar</Text>
+        <TouchableOpacity onPress={handlePickImage}>
+          <Image
+            source={profilePhoto ? {uri: profilePhoto} : ProfileIcon}
+            style={styles.profileImage}
+          />
+        </TouchableOpacity>
+        <Text style={styles.profileName}>{userName}</Text>
         <Text style={styles.profileId}>1050225122</Text>
 
         <View style={styles.menuContainer}>
@@ -39,9 +133,7 @@ const ProfileScreen = ({navigation}) => {
             <Text style={styles.menuText}>Privasi</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigation.replace('SplashScreen')}>
+          <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
             <Image source={Logout} style={styles.menuIcon} />
             <Text style={styles.menuText}>Log out</Text>
           </TouchableOpacity>

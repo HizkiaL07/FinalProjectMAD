@@ -20,14 +20,39 @@ import {
   MentorIcon,
   ProfileIcon,
 } from '../../Assets';
+import {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getAuth} from 'firebase/auth';
 
 const HomeScreen = ({navigation}) => {
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
+  useEffect(() => {
+    const loadProfilePhoto = async () => {
+      const auth = getAuth();
+      const uid = auth.currentUser?.uid;
+      if (uid) {
+        const savedPhoto = await AsyncStorage.getItem(`profilePhoto-${uid}`);
+        if (savedPhoto) {
+          setProfilePhoto(savedPhoto);
+        } else {
+          setProfilePhoto(null);
+        }
+      }
+    };
+
+    const unsubscribe = navigation.addListener('focus', loadProfilePhoto);
+    return unsubscribe;
+  }, [navigation]);
   return (
     <View style={styles.page}>
       <View style={styles.header}>
         <Text style={styles.headerText}>HOME</Text>
-        <TouchableOpacity>
-          <Image source={ProfileIcon} style={styles.profileIcon} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Image
+            source={profilePhoto ? {uri: profilePhoto} : ProfileIcon}
+            style={styles.profileIcon}
+          />
         </TouchableOpacity>
       </View>
 
